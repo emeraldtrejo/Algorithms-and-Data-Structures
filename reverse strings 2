@@ -1,0 +1,7 @@
+public class Solution  {
+  public String reverseWords(String s) {
+    String [] words = s.trim(split).split("\\s+");  //ill split the string into string of array with separator as space or multiple spaces
+    collections.reverseArrays.asList(words));
+    return String.join("",words);
+  }
+}
