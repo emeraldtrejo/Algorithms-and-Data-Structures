@@ -4,5 +4,20 @@ public class Locker {
     boolean [] = new boolean[100];
     
     for( int i =1; i < locker.length; i++)
+    {
+     for(int t = i, t < locker.length; t+=i)
+      
+      if(locker[t] == false) {
+        locker[t] = true;
+      }
+     
+     else
+     {
+      locker[t] = false;
+     }
+    }
+    for (int i = 1; i < locker.length; i++){
+      system.out.println(locker[i] + " " + i)
+    }
   }
 } 
