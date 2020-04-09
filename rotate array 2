@@ -1,0 +1,27 @@
+[1,2,3,4,5] d = 2 result must be [3,4,5,1,2]
+
+static int[] rotLeft(int[] a, int d){
+  int size = a.length;
+  int[] rotated_arr = new int[size];
+  
+  int i = 0;
+  int rotate_index = d;  //this is 2
+  
+  while(rotate_index < size) {   //while 2 is less than 5
+    rotated_arr[i] = a[rotate_index];  //at position 2 of the array a[2] put it in rotated_arr[0] then 
+                                        // then increment the i as well as the position of a[]
+    i++;
+    rotate_index++;                     //finished produce will be [3,4,5..]
+    
+  }
+  
+  rotate_index = 0;
+  while(rotate_index < d) {
+    rotated_arr[i] = a[rotate_index];
+    i++;
+    rotate_index++;
+  }
+  
+  return rotated_arr;
+  
+}
