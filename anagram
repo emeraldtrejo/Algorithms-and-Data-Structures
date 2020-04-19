@@ -1,0 +1,51 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+
+class Result {
+
+    /*
+     
+     * The function is expected to return a STRING_ARRAY.
+     * The function accepts STRING_ARRAY text as parameter.
+     */
+
+    public static List<String> Anagrams(List<String> text) {
+    // Write your code here
+        List<String> anagramResult = new ArrayList<>();
+        //keep track of words
+        Set<String> found = new HashSet<String>();
+        //to read in length of amount of words
+        for(int i=0; i<text.size(); i++) {
+            //convert each position of string to a word
+            String word = text.get(i);
+            //convert it to a char for easier sort
+            char[] characters = word.toCharArray();
+            //sort them for easier
+            Arrays.sort(characters);
+            //convert them back
+            String sorted = new String(characters);
+
+            //if we found a word 
+            if(!found.contains(sorted)){
+                anagramResult.add(word);
+                found.add(sorted);
+            }
+
+        }
+        Collections.sort(anagramResult);
+   
+        return anagramResult;
+    }
+
+}
+public class Solution {
