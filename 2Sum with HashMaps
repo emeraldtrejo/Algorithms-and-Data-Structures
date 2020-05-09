@@ -1,0 +1,27 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+    //return an array with 2 integers
+        int[] result = new int[2];
+        
+    //having a map wil allow us to find the complement quicker
+    HashMap<Integer, Integer> set = new HashMap<Integer, Integer>();
+        
+    //want to loop through the array of integers to try and find which may match
+    for(int i = 0; i <nums.length; i++){
+        //we want to find a complement when we are at the nums[i] position
+        int complement = target - nums[i];
+        if (set.containsKey(complement)){
+            //if we find a success, we want to put the values into the array
+            result[0] = i;
+            result[1] = set.get(complement);
+            //filled the values of the result now return it
+            return result;
+        }
+        //what shoul we return if no match?
+        set.put(nums[i], i);
+        
+    }
+        return result;
+        
+}
+}
