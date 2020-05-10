@@ -1,0 +1,41 @@
+class Solution {
+    public int findMin(int[] nums) {
+        //we want to use 2 pointers left and right
+        //left being the least number because its sorted
+        int left = 0;
+        int right = nums.length-1;
+        //int middle;
+        
+        while (left < right){   //this covers the case of [3,1,2]
+        int middle = left + (right - left) /2;  //middle changes 
+        if (nums[middle] > nums[right]){
+               left = middle + 1;
+           }
+            
+        else{
+               right = middle;
+         }
+        }
+        //we are returning the number, not the position
+        return nums[left];
+    }
+}
+
+/*
+Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+
+(i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
+
+Find the minimum element.
+
+You may assume no duplicate exists in the array.
+
+Example 1:
+
+Input: [3,4,5,1,2] 
+Output: 1
+Example 2:
+
+Input: [4,5,6,7,0,1,2]
+Output: 0
+*/
