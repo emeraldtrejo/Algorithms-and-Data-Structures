@@ -1,0 +1,53 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+        int i = 0;
+        int j = s.length() -1;
+        
+        while( i < j)
+        {
+            //first check if there is a space coming from the the left
+            //use a while because there could be more than 1 space
+            // we are checking if the character in the string at is not a char
+            while(i < j && !Character.isLetterOrDigit(s.charAt(i)))
+            {
+                //we move spaces to the right until we find a character
+                i++;
+            }
+            
+            while (i < j && ! Character.isLetterOrDigit(s.charAt(j))){
+                //if there is a space on the right we decrement
+                j--;
+            }
+            
+            //if there isnt a space we check the characters if they are not equal 
+            //want to check if character if all lowercase is equal, this checks if they arent
+            if(i < j && Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j)))
+               {
+                   return false;
+               }
+            else //if they match lets keep checking
+            {
+                i++;
+                j--;
+            }
+           
+        }
+         return true;
+    }
+}
+
+/*
+Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+
+Note: For the purpose of this problem, we define empty string as valid palindrome.
+
+Example 1:
+
+Input: "A man, a plan, a canal: Panama"
+Output: true
+Example 2:
+
+Input: "race a car"
+Output: false
+
+*/
