@@ -1,0 +1,32 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+        //if the end is the same as the beginning
+        //and increment from the start and decrement from the end
+        //if number is null, zero or negative
+        if (x == 0)
+        {
+            return true;
+        }
+        //if negative or number ending in 0 such as 20
+        if (x < 0 || x %10 ==0) {
+            return false;
+        }
+        
+        int reversed = 0;
+        //lets reverse the number
+        while(x > reversed){
+            int pop = x %10; //lets pop it off!
+            x = x/10;
+            reversed = (reversed *10) + pop;          
+            
+        }
+        
+        //we have to take into account odd cases such as 121
+        if( x == reversed || x == reversed/10){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }   
+}
