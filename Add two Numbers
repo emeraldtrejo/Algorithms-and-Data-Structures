@@ -1,0 +1,71 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+       
+        //we are returning a node so initialize a dummy head and a pointer that moves
+        ListNode dummy = new ListNode(0); //dummy is always at 0
+        ListNode l3 = dummy;  //this allows our pointer to start at 0
+        int carry = 0; 
+        
+        //we want to traverse through only if they are both not null 
+        while (l1 != null && l2 != null)
+        {
+            //assign the values of l1 and l2 to the val 
+            //and if they are null assign a 0
+            int l1_val = l1 != null ? l1.val : 0;
+                
+            int l2_val = l2 != null ? l2.val : 0;
+            
+            int sums = l1_val + l2_val + carry;
+            // we have the sum may be 2 numbers ie 10
+            //we need 1 and the 0, 1 is done by division, 0 by mod
+            //we want to assign the 1 to the carry
+            //once we have the right digit we want to add it to l3 
+            //by converting int to ListNode
+            //we want to add it to the next node in the list
+            l3.next = new ListNode(sums % 10);
+            carry = sums / 10;
+            
+            //we want to then move the cursor 
+            l3 = l3.next;
+            //we want to continue checking the list so that the values can be reassigned 
+            //at the top
+            if(l1 != null)
+               l1 = l1.next;
+            if(l2 != null)
+               l2 = l2.next;
+                
+        }
+        
+        //if we have a carry over we want to add the carry if we have no more spaces
+        if(carry > 0)
+        {
+            ListNode last = new ListNode(carry);
+            
+        }
+        return dummy.next;
+    }
+}
+
+/*
+(2 -> 4 -> 3) + (5 -> 6 -> 4)
+
+243
+564
+708
+Output: 7 -> 0 -> 8
+what if there is a case where 1 is carried
+what if there is 1 and 99? we need 3  as result
+and what if there is a 1, how do we add the 99? 
+if empty add a 0
+if there is an extra carry add a it to the end
+*/
