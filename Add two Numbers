@@ -17,14 +17,12 @@ class Solution {
         int carry = 0; 
         
         //we want to traverse through only if they are both not null 
-        while (l1 != null && l2 != null)
+        while (l1 != null || l2 != null)
         {
             //assign the values of l1 and l2 to the val 
             //and if they are null assign a 0
             int l1_val = l1 != null ? l1.val : 0;
-                
-            int l2_val = l2 != null ? l2.val : 0;
-            
+            int l2_val = l2 != null ? l2.val : 0;   
             int sums = l1_val + l2_val + carry;
             // we have the sum may be 2 numbers ie 10
             //we need 1 and the 0, 1 is done by division, 0 by mod
@@ -32,9 +30,8 @@ class Solution {
             //once we have the right digit we want to add it to l3 
             //by converting int to ListNode
             //we want to add it to the next node in the list
-            l3.next = new ListNode(sums % 10);
             carry = sums / 10;
-            
+            l3.next = new ListNode(sums % 10);
             //we want to then move the cursor 
             l3 = l3.next;
             //we want to continue checking the list so that the values can be reassigned 
@@ -42,16 +39,16 @@ class Solution {
             if(l1 != null)
                l1 = l1.next;
             if(l2 != null)
-               l2 = l2.next;
-                
+               l2 = l2.next;                
         }
         
         //if we have a carry over we want to add the carry if we have no more spaces
+        //we add as a new listnode
         if(carry > 0)
-        {
-            ListNode last = new ListNode(carry);
-            
-        }
+        
+            l3.next = new ListNode(carry);
+                        
+        
         return dummy.next;
     }
 }
