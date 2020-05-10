@@ -7,7 +7,7 @@ class Solution {
         //int middle;
         
         while (left < right){   //this covers the case of [3,1,2]
-        int middle = left + (right - left) /2;  //middle changes 
+        int middle = left + (right - left) /2;  //middle changes 6/2=3, we need 6-4/2 = 1 + 4 = 5
         if (nums[middle] > nums[right]){
                left = middle + 1;
            }
