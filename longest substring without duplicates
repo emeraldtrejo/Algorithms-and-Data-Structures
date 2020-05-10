@@ -1,0 +1,39 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        //we use a hashset because we want the characters to be unique
+        HashSet set = new HashSet();
+        //2 pointers to be the beg and end of string
+        int begin = 0;
+        int end = 0;
+        int result = 0;
+        //we want to traverse through the string 
+        while(end < s.length())
+        {
+            if(set.contains(s.charAt(end))){
+                //we do this to chop off the left most 
+                //increment
+                set.remove(s.charAt(begin));
+                begin++;
+            }
+            else{
+                //otherwise we want to add the letter to the hashset
+                set.add(s.charAt(end));
+                end++;
+                //we have the hashset, now we have to calc the longest length
+                result = Math.max(result, set.size());
+            }
+            
+            
+        }
+        return result;
+    }
+}
+/*
+Given a string, find the length of the longest substring without repeating characters.
+
+Example 1:
+
+Input: "abcabcbb"
+Output: 3 
+Explanation: The answer is "abc", with the length of 3. 
+*/
