@@ -1,0 +1,18 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        HashMap<Integer, Integer> counts = new HashMap<Integer, Integer>();
+        //extract the numbers and their occurences
+        for(int i: nums){
+           //if it exists and if it has appeard more than half the length of nums return it
+            //add 1 becuse we see it again
+          if(counts.containsKey(i) && counts.get(i)+ 1 >= nums.length/2 ){
+             return i;
+          }
+        //if it hasnt fulfilled this requirement than we want to add a 1 to our counter in the map
+        else{
+            counts.put(i, counts.getOrDefault(i, 0) + 1);
+            }
+        }
+        return -1;
+    }
+}
