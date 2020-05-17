@@ -1,0 +1,25 @@
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        //our key is character, our integer is our value
+        HashMap<Character, Integer> counts = new HashMap<Character, Integer>();
+        
+        //we want to search the maganize and keep track
+        for(char c: magazine.toCharArray()){
+            //lets see if the letter exists if not we want to add and the times it occured
+            counts.put(c, counts.getOrDefault(c, 0) + 1);
+        }
+        
+        //convert our ransome note for each letter for evaluation
+        for(char c : ransomNote.toCharArray()){
+            //want to see if our letters exist to create the ransome note
+            //if the maganzine didnt have the letter or ran out of letters
+            if(!counts.containsKey(c) || counts.get(c) <=0){
+                return false;
+            }
+            //otherwise we want to decrement the letter
+            counts.put(c, counts.get(c)-1);
+        }
+        return true;
+        
+    }
+}
