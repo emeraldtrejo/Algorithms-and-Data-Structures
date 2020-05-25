@@ -1,0 +1,17 @@
+class Solution {
+    public List<String> findRepeatedDnaSequences(String s) {
+        List<String> sequence = new ArrayList<>();
+        HashMap<String, Integer> set = new HashMap<String, Integer>();
+        
+        int i = 0;
+        while (i + 10 <= s.length()){
+           String subsequence = s.substring(i, i++ + 10);
+           set.put(subsequence, set.getOrDefault(subsequence, 0) + 1);           
+
+            if(set.get(subsequence) == 2){
+            sequence.add(subsequence);
+            }
+        }
+        return sequence;
+    }
+}
